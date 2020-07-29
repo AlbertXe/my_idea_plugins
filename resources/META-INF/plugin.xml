@@ -1,0 +1,73 @@
+<idea-plugin>
+    <id>com.your.company.unique.plugin.id</id>
+    <name>Plugin display name here</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceInterface="MyApplicationService"
+                            serviceImplementation="impl.MyApplicationServiceImpl"/>
+    </extensions>
+
+    <actions>
+        <group id="自定义插件" popup="true" text="自定义插件">
+            <action id="SayHello" class="action.SayHelloAction" text="Say Hello!">
+            </action>
+            <action id="selectKeyWords" class="action.KeyWords" text="keyWords" description="查找特定包下某种有共同点的字符串">
+            </action>
+            <action id="fileRename" class="action.FileRenameAction" text="fileRename" description="目录下文件充命名">
+            </action>
+            <action id="fileCopy" class="action.FileCopyAction" text="fileCopy" description="文件复制">
+            </action>
+            <action id="bigFileRead" class="action.BigFileReadAction" text="bigFileRead" description="大文件尝试读取">
+            </action>
+            <add-to-group group-id="WindowMenu" anchor="first"/>
+        </group>
+
+    </actions>
+
+    <application-components>
+        <component>
+            <implementation-class>application.MyApplication</implementation-class>
+        </component>
+        <component>
+            <implementation-class>application.KeyWordsApplication</implementation-class>
+        </component>
+        <component>
+            <implementation-class>application.FileRenameApplication</implementation-class>
+        </component>
+        <component>
+            <implementation-class>application.FileCopyApplication</implementation-class>
+        </component>
+        <component>
+            <implementation-class>application.BigFileReadComponent</implementation-class>
+        </component>
+    </application-components>
+    <project-components>
+
+    </project-components>
+
+    <extensions defaultExtensionNs="com.intellij"></extensions>
+
+</idea-plugin>
