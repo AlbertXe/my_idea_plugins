@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import utils.FileUtils;
 import utils.ResourcesLoad;
 
-import java.io.File;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -30,9 +29,8 @@ public class FileRenameApplication implements ApplicationComponent {
             return file.contains(oldname);
         }).forEach(file -> {
             count.incrementAndGet();
-            File f = new File(file);
             String newfile = file.replace(oldname, newname);
-            f.renameTo(new File(newfile));
+            FileUtils.copy(file, newfile);
         });
 
         Messages.showMessageDialog("一共" + count.get() + "重命名成功", "文件重命名", Messages.getInformationIcon());
